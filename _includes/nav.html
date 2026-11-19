@@ -1,0 +1,10 @@
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="wordmark" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ site.title }}</a>
+    <nav aria-label="Main navigation">
+      <a class="metal-button metal-button--compact" href="{{ '/' | relative_url }}#projects"{% if page.layout == 'case-study' %} aria-current="true"{% endif %}>Projects</a>
+      <a class="metal-button metal-button--compact" href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
+      <a class="metal-button metal-button--compact" href="{{ site.linkedin }}">LinkedIn</a>
+    </nav>
+  </div>
+</header>

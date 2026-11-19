@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="{{ page.language | default: site.language | default: 'en' }}">
+<!-- Beautiful Jekyll 6.0.1 | Copyright Dean Attali 2023 -->
+{% include head.html %}
+<body class="{{ page.body_class | default: 'inner-page' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include nav.html %}
+  {{ content }}
+  {% include footer.html %}
+  <script defer src="{{ '/assets/js/portfolio-interactions.js' | relative_url }}"></script>
+</body>
+</html>

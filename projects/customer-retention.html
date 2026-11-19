@@ -1,0 +1,44 @@
+---
+layout: case-study
+title: Customer Revenue Recovery & Retention ROI Engine
+project: customer-retention
+permalink: /projects/customer-retention/
+description: "A retention decision engine that screens paid offers by expected net value and sizes a proposed controlled test."
+lede: "Which customers warrant a paid retention offer, and how much should the business commit before it knows whether the offer works?"
+metrics:
+  - value: "970,960"
+    label: Customers scored
+  - value: "71,437"
+    label: Positive-value paid-offer candidates
+  - value: "$750K"
+    label: Proposed test budget cap
+---
+<div class="case-grid">
+  <section aria-labelledby="problem">
+    <h2 id="problem">Business problem</h2>
+    <p>Retention budgets are finite. Some high-risk customers have too little value at stake to justify a discount, and some people who accept an offer would have stayed anyway. The business needed a way to prioritize spend and measure incremental impact.</p>
+  </section>
+  <section aria-labelledby="role">
+    <h2 id="role">My role</h2>
+    <p>I built the customer-level dataset, estimated profit-adjusted customer lifetime value (CLV), trained and validated the churn model, and turned the scores into an offer screen, a budget simulation, and an A/B test plan.</p>
+  </section>
+</div>
+
+{% assign retention = site.data.projects | where: 'slug', page.project | first %}
+<figure class="case-figure case-figure--retention">
+  {% include workflow.html project=retention %}
+  <figcaption>The workflow moves from risk and value estimates to an offer screen, a simulated budget, and a proposed experiment with treatment and control groups.</figcaption>
+</figure>
+
+<div class="case-grid">
+  <section aria-labelledby="method">
+    <h2 id="method">Method</h2>
+    <p>Using Python and SQL, I combined predicted churn, a profit-adjusted CLV proxy, and lifecycle context. I checked how the model’s ranking held up after removing direct cancellation signals. For paid offers, I multiplied churn probability by the CLV proxy and the assumed intervention response rate, then subtracted estimated offer cost.</p>
+    <p>I varied response rates, costs, and budget limits. Under base-case assumptions, 71,437 of 970,960 scored customers cleared the paid-offer screen. The $750K cap captured 99.99% of the maximum net value in the tested budget range. That figure is a simulation result based on value and cost proxies.</p>
+  </section>
+  <section aria-labelledby="decision">
+    <h2 id="decision">Decision informed</h2>
+    <p>I proposed a stratified A/B test using 62,836 eligible customers, planned around the $750K cap. Treatment would receive the offer and control would establish how much retention would have happened anyway.</p>
+    <p>The rollout criteria require lower churn, positive incremental net value, and acceptable customer-experience measures. The project ended with the proposed test design and modeled economics.</p>
+  </section>
+</div>

@@ -1,0 +1,41 @@
+- slug: customer-retention
+  title: Customer Revenue Recovery & Retention ROI Engine
+  area: Retention strategy
+  summary: Ranked paid retention offers by expected value and designed a controlled test around a proposed $750K budget cap.
+  url: /projects/customer-retention/
+  dashboard: https://public.tableau.com/app/profile/aaditya.mandal/viz/CustomerRevenueRecoveryRetentionROIDashboard/ModelConfidenceGovernanceBoard
+  repository: https://github.com/aadimandall/customer-revenue-recovery-retention-ROI-engine-
+  workflow_title: Retention offer workflow
+  workflow_alt: Combine churn risk and customer value, screen paid offers for positive expected net value, simulate budgets, then design a controlled test.
+  workflow:
+    - name: Score risk & value
+      detail: Combine churn likelihood with profit-adjusted lifetime value and lifecycle context.
+    - name: Screen paid offers
+      detail: Apply a response assumption and subtract the estimated intervention cost.
+    - name: Simulate budgets
+      detail: Compare targeting depth, expected net value, and break-even response.
+    - name: Design the test
+      detail: Randomize across treatment and control and define rollout criteria.
+- slug: credit-risk
+  title: Credit Risk & Customer Profitability Analytics
+  area: Portfolio risk
+  summary: Used default-risk scores to prioritize account review and compare the tradeoffs of different credit policies.
+  url: /projects/credit-risk/
+  dashboard: https://public.tableau.com/app/profile/aaditya.mandal/viz/PROJECT1_17820986935880/Dashboard1
+  repository: https://github.com/aadimandall/credit-risk-customer-profitability-analytics
+  image: /assets/img/credit-risk-dashboard.png
+  image_alt: "Tableau dashboard showing default rates by risk decile, cumulative default and loss capture, a credit policy frontier, and expected loss by risk decile and strategy."
+- slug: operations
+  title: Operations KPI & Service-Flow Analytics
+  area: Campus operations
+  summary: Used nightly recreation data to inform staffing and scheduling changes that helped the operation start more games on time.
+  url: /projects/operations/
+  workflow_title: Recreation operations workflow
+  workflow_alt: Log nightly recreation metrics, review weekly KPI reports for late starts and staffing gaps, then use the findings to adjust coverage and schedules.
+  workflow:
+    - name: Log nightly activity
+      detail: Track participation, forfeits, incidents, coverage, and schedule performance.
+    - name: Review weekly KPIs
+      detail: Identify recurring late starts, peak bottlenecks, and gaps in staffing coverage.
+    - name: Adjust schedules
+      detail: Use the findings to inform staffing, scheduling, and league-format changes.

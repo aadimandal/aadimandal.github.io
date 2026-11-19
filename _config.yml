@@ -1,0 +1,18 @@
+title: Aaditya Mandal
+description: "Purdue MSBAIM portfolio on customer retention, credit risk, and campus operations."
+url: "https://aadimandal.github.io"
+baseurl: ""
+language: en
+linkedin: "https://www.linkedin.com/in/aaditya-mandal-390a44405"
+image: /assets/img/aaditya-mandal.jpg
+markdown: kramdown
+theme: null
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tsconfig.json

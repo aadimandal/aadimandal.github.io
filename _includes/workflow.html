@@ -1,0 +1,14 @@
+{% assign flow_project = include.project %}
+<div class="workflow{% if include.compact %} workflow--compact{% endif %}" role="img" aria-label="{{ flow_project.workflow_alt | escape }}">
+  <div aria-hidden="true">
+    <p class="workflow__title">{{ flow_project.workflow_title }}</p>
+    <ol class="workflow__steps">
+      {% for step in flow_project.workflow %}
+      <li>
+        <strong>{{ step.name }}</strong>
+        {% unless include.compact %}<span>{{ step.detail }}</span>{% endunless %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>

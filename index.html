@@ -1,0 +1,62 @@
+---
+layout: base
+body_class: home
+description: "Aaditya Mandal, Purdue MSBAIM candidate. Selected work in retention strategy, credit risk, and operations analytics."
+---
+<main id="main" class="shell" tabindex="-1">
+  <section class="hero" aria-labelledby="home-title">
+    <div class="hero__copy">
+      <h1 id="home-title"><span>Aaditya</span> <span>Mandal</span></h1>
+      <p class="hero__education">Purdue MSBAIM ’27</p>
+      <p class="lede">I use data to decide where retention dollars go, which accounts need review, and how to staff for peak demand.</p>
+      <div class="actions">
+        <a class="metal-button" href="#projects">View projects</a>
+        <a class="metal-button" href="{{ '/about/' | relative_url }}">About me</a>
+      </div>
+    </div>
+    <div class="hero__portrait">
+      <img src="{{ site.image | relative_url }}" alt="Aaditya Mandal in a navy suit" width="900" height="1125" fetchpriority="high">
+    </div>
+  </section>
+
+  <section class="selected-work" id="projects" aria-labelledby="projects-title" tabindex="-1">
+    <h2 id="projects-title">Selected work</h2>
+    <div class="work-layout">
+      <nav class="work-index" aria-label="Jump to a project" data-work-index>
+        <ul>
+          {% for project in site.data.projects %}
+          <li><a class="metal-button metal-button--compact" href="#{{ project.slug }}">{{ project.area }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <div class="work-layout__projects">
+        {% for project in site.data.projects %}
+        <article id="{{ project.slug }}" class="project-row project-row--{{ project.slug }}" aria-labelledby="{{ project.slug }}-title" tabindex="-1">
+          <div class="project-row__copy">
+            <h3 id="{{ project.slug }}-title">{{ project.title }}</h3>
+            <p>{{ project.summary }}</p>
+            <a class="metal-button" href="{{ project.url | relative_url }}">Read case study<span class="sr-only"> for {{ project.title }}</span></a>
+          </div>
+          <div class="project-row__media">
+            <div class="project-row__visual">
+              {% if project.image %}
+              <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt | escape }}" width="2402" height="1824" loading="lazy">
+              <p class="project-row__caption">The dashboard shows top-decile lift for full-portfolio validation.</p>
+              {% else %}
+              {% include workflow.html project=project compact=true %}
+              {% endif %}
+            </div>
+            <div class="project-row__folder" data-project-folder
+              data-folder-label="{{ project.area | escape }}"
+              data-case-study="{{ project.url | relative_url }}"
+              {% if project.dashboard %}data-dashboard="{{ project.dashboard | escape }}"{% endif %}
+              {% if project.repository %}data-repository="{{ project.repository | escape }}"{% endif %}
+              {% if project.slug == 'operations' %}data-workflow="{{ project.url | relative_url }}#workflow"{% endif %}
+            ></div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>

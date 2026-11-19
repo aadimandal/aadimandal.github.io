@@ -1,0 +1,40 @@
+---
+layout: case-study
+title: Operations KPI & Service-Flow Analytics
+project: operations
+permalink: /projects/operations/
+description: "Campus recreation analytics that informed staffing and schedule changes and helped reduce late game starts."
+lede: "How could campus recreation start more games on time while keeping games on schedule through busy evening blocks?"
+metrics:
+  - value: "20%"
+    label: Reduction in late game starts over two quarters
+  - value: "95%+"
+    label: On-time game completion maintained
+---
+<div class="case-grid">
+  <section aria-labelledby="problem">
+    <h2 id="problem">Business problem</h2>
+    <p>Recurring late starts during busy recreation blocks made it harder to keep games on schedule. The operation needed to locate those delays and understand where staffing coverage, schedules, or league formats could help.</p>
+  </section>
+  <section aria-labelledby="role">
+    <h2 id="role">My role</h2>
+    <p>As an operations manager at UC Riverside, I supervised student staff, coordinated evening recreation, and built Excel and R reports to make schedule and coverage issues visible. I recommended league-format changes and supported the team’s staffing and scheduling adjustments.</p>
+  </section>
+</div>
+
+{% assign operations = site.data.projects | where: 'slug', page.project | first %}
+<figure id="workflow" class="case-figure case-figure--operations">
+  {% include workflow.html project=operations %}
+  <figcaption>Nightly activity and schedule records fed a weekly KPI review. The recreation team used recurring patterns to guide staffing, schedule, and league-format adjustments.</figcaption>
+</figure>
+
+<div class="case-grid">
+  <section aria-labelledby="method">
+    <h2 id="method">Method</h2>
+    <p>I tracked participation, forfeits, incidents, staffing coverage, and schedule performance. The weekly reports surfaced repeated late starts, peak-window bottlenecks, and staffing gaps, giving the team a way to connect timing problems to coverage and league format.</p>
+  </section>
+  <section aria-labelledby="decision">
+    <h2 id="decision">Decision and outcome</h2>
+    <p>The reports informed where the recreation operation adjusted staffing and schedules. Over two quarters, the operation reduced late game starts by 20% while maintaining 95%+ on-time game completion. These figures describe the operation’s aggregate performance during the changes.</p>
+  </section>
+</div>

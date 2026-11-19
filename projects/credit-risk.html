@@ -1,0 +1,51 @@
+---
+layout: case-study
+title: Credit Risk & Customer Profitability Analytics
+project: credit-risk
+permalink: /projects/credit-risk/
+description: "A credit portfolio analysis that ranks accounts for review and simulates risk and profitability tradeoffs."
+lede: "With limited review capacity, which accounts should a lender look at first, and what would a tighter or looser credit policy change?"
+image: /assets/img/credit-risk-dashboard.png
+image_alt: "Tableau dashboard for credit risk and customer profitability."
+metrics:
+  - value: "30,000"
+    label: Anonymized credit card records
+  - value: "0.779"
+    label: Holdout ROC-AUC
+  - value: "3.15×"
+    label: Default lift in the highest-risk holdout decile
+---
+<div class="case-grid">
+  <section aria-labelledby="problem">
+    <h2 id="problem">Business problem</h2>
+    <p>Reviewing accounts in an arbitrary order can bury borrowers at higher risk of default. A lender also needs to understand how changes to approval and monitoring rules could affect volume, potential losses, and risk-adjusted profitability.</p>
+  </section>
+  <section aria-labelledby="role">
+    <h2 id="role">My role</h2>
+    <p>I built the SQL portfolio analysis and Python model pipeline, compared credit-policy scenarios, and created a Tableau dashboard to communicate risk concentration and policy tradeoffs.</p>
+  </section>
+</div>
+
+{% assign credit = site.data.projects | where: 'slug', page.project | first %}
+<figure class="case-figure">
+  <div class="figure-image">
+    <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
+  </div>
+  <figcaption>
+    <p>The Tableau export shows default rates by risk decile, default and loss capture, and simulated policy tradeoffs. Its 3.39× top-decile lift is for full-portfolio validation, where the highest-risk decile had a 75.03% observed default rate versus 22.12% across the portfolio.</p>
+    <a class="metal-button metal-button--compact figure-action" href="{{ credit.image | relative_url }}">Open full-size image</a>
+  </figcaption>
+</figure>
+
+<div class="case-grid">
+  <section aria-labelledby="method">
+    <h2 id="method">Method</h2>
+    <p>I used the UCI Default of Credit Card Clients dataset. I profiled exposure, expected loss, and profitability proxies in DuckDB, then compared logistic regression, random forest, and histogram gradient boosting. The strongest model achieved a holdout ROC-AUC of 0.779 and 3.15× default lift in the highest-risk holdout decile.</p>
+    <p>I simulated conservative, balanced, and growth-oriented policies to compare approval volume, default capture, and risk-adjusted profit proxies under different screening rules.</p>
+  </section>
+  <section aria-labelledby="decision">
+    <h2 id="decision">Decision informed</h2>
+    <p>The risk ranking showed how to direct review toward accounts with greater predicted default risk. In the full-portfolio validation, a 0.150 monitoring threshold flagged 49.94% of accounts and captured 86.38% of historical defaults.</p>
+    <p>That threshold illustrates a review-capacity tradeoff using historical data. Loss and profit are proxy estimates because the dataset lacks actual pricing, recoveries, and charge-offs. The policy scenarios support portfolio comparison.</p>
+  </section>
+</div>

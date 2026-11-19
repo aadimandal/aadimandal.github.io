@@ -1,0 +1,28 @@
+---
+layout: base
+---
+{% assign project = site.data.projects | where: 'slug', page.project | first %}
+<main id="main" class="shell page case-page" tabindex="-1">
+  <article>
+    <header class="page-intro">
+      <a class="metal-button metal-button--compact back-link" href="{{ '/' | relative_url }}#projects">All projects</a>
+      <h1>{{ project.title }}</h1>
+      <p class="lede">{{ page.lede }}</p>
+      {% if project.dashboard or project.repository %}
+      <div class="actions" aria-label="Project links">
+        {% if project.dashboard %}<a class="metal-button" href="{{ project.dashboard }}">View live Tableau dashboard</a>{% endif %}
+        {% if project.repository %}<a class="metal-button" href="{{ project.repository }}">Project repository</a>{% endif %}
+      </div>
+      {% endif %}
+    </header>
+    <dl class="metrics" aria-label="Project results">
+      {% for metric in page.metrics %}
+      <div>
+        <dt>{{ metric.label }}</dt>
+        <dd>{{ metric.value }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+    {{ content }}
+  </article>
+</main>
