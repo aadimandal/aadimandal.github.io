@@ -19,7 +19,14 @@ layout: base
       {% for metric in page.metrics %}
       <div>
         <dt>{{ metric.label }}</dt>
-        <dd>{{ metric.value }}</dd>
+        <dd>
+          {% if metric.animate %}
+          <span class="sr-only">{{ metric.value }}</span>
+          <span class="metric-ticker" data-metric-ticker="{{ metric.value | escape }}" aria-hidden="true"><span>{{ metric.value }}</span></span>
+          {% else %}
+          {{ metric.value }}
+          {% endif %}
+        </dd>
       </div>
       {% endfor %}
     </dl>

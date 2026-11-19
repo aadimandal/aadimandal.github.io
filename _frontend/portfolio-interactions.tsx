@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import GlassFolder, { type FolderFile } from "@/components/ui/glass-folder-cards";
 import { enhanceMetalButtons } from "@/components/ui/liquid-metal-button";
 import { enableScrollMotion } from "./portfolio-motion";
+import { enhanceDashboardZoom, enableCaseStudyMotion } from "./case-study-interactions";
 
 function ProjectFolder({ target, animate }: { target: HTMLElement; animate: boolean }) {
   const { folderLabel, caseStudy, dashboard, repository, workflow } = target.dataset;
@@ -42,6 +43,8 @@ function ProjectFolder({ target, animate }: { target: HTMLElement; animate: bool
 
 const motionPreference = window.matchMedia("(prefers-reduced-motion: no-preference)");
 enhanceMetalButtons(motionPreference);
+enhanceDashboardZoom();
+enableCaseStudyMotion(motionPreference);
 for (const host of document.querySelectorAll<HTMLElement>("[data-project-folder]")) {
   createRoot(host).render(<ProjectFolder target={host} animate={motionPreference.matches} />);
 }

@@ -10,6 +10,7 @@ image_alt: "Tableau dashboard for credit risk and customer profitability."
 metrics:
   - value: "30,000"
     label: Anonymized credit card records
+    animate: true
   - value: "0.779"
     label: Holdout ROC-AUC
   - value: "3.15×"
@@ -29,13 +30,30 @@ metrics:
 {% assign credit = site.data.projects | where: 'slug', page.project | first %}
 <figure class="case-figure">
   <div class="figure-image">
-    <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
+    <a href="{{ credit.image | relative_url }}" data-dashboard-zoom aria-label="Enlarge credit risk dashboard">
+      <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
+    </a>
   </div>
   <figcaption>
     <p>The Tableau export shows default rates by risk decile, default and loss capture, and simulated policy tradeoffs. Its 3.39× top-decile lift is for full-portfolio validation, where the highest-risk decile had a 75.03% observed default rate versus 22.12% across the portfolio.</p>
-    <a class="metal-button metal-button--compact figure-action" href="{{ credit.image | relative_url }}">Open full-size image</a>
+    <a class="metal-button metal-button--compact figure-action" href="{{ credit.image | relative_url }}" data-dashboard-zoom>Enlarge dashboard</a>
   </figcaption>
 </figure>
+
+<dialog class="dashboard-dialog" aria-labelledby="dashboard-heading" data-dashboard-dialog>
+  <div class="dashboard-dialog__toolbar">
+    <h2 id="dashboard-heading">Credit risk dashboard</h2>
+    <div class="dashboard-dialog__actions">
+      <button class="metal-button metal-button--compact" type="button" aria-controls="dashboard-image-view" data-dashboard-size>Actual size</button>
+      <form method="dialog">
+        <button class="metal-button metal-button--compact" autofocus>Close</button>
+      </form>
+    </div>
+  </div>
+  <div class="dashboard-dialog__viewport" id="dashboard-image-view" role="region" aria-label="Dashboard image" tabindex="0">
+    <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
+  </div>
+</dialog>
 
 <div class="case-grid">
   <section aria-labelledby="method">

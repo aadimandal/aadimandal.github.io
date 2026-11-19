@@ -208,6 +208,7 @@ h3 { font-size: clamp(1.45rem, 2.65vw, 2.45rem); }
   text-decoration: none;
   vertical-align: middle;
   box-shadow: 0 4px 11px #020b18a8;
+  cursor: pointer;
 }
 
 .metal-button::before {
@@ -460,12 +461,16 @@ h3 { font-size: clamp(1.45rem, 2.65vw, 2.45rem); }
   line-height: 1.42;
 }
 
+.workflow__steps li:not(:last-child)::before,
 .workflow__steps li:not(:last-child)::after {
   position: absolute;
   top: 50%;
   left: 100%;
   width: calc(1.2rem + 2px);
   height: 1px;
+}
+
+.workflow__steps li:not(:last-child)::after {
   background: var(--workflow-accent);
   content: "";
 }
@@ -578,6 +583,19 @@ h3 { font-size: clamp(1.45rem, 2.65vw, 2.45rem); }
   font-variant-numeric: lining-nums tabular-nums;
 }
 
+.metric-ticker {
+  display: inline-grid;
+  white-space: nowrap;
+}
+
+.metric-ticker::before,
+.metric-ticker > span { grid-area: 1 / 1; }
+
+.metric-ticker::before {
+  content: attr(data-metric-ticker);
+  visibility: hidden;
+}
+
 .case-figure { margin-block: clamp(1.8rem, 4vw, 3.2rem); }
 
 .figure-image {
@@ -587,6 +605,69 @@ h3 { font-size: clamp(1.45rem, 2.65vw, 2.45rem); }
 }
 
 .figure-image img { width: 100%; }
+
+.figure-image [data-dashboard-zoom] { display: block; cursor: zoom-in; }
+
+.dashboard-dialog {
+  width: min(94vw, 76rem);
+  max-width: none;
+  max-height: calc(100dvh - 1.5rem);
+  padding: 0;
+  border: 1px solid var(--accent-line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 22px 54px #020b18c2;
+}
+
+.dashboard-dialog:not([open]) { display: none; }
+.dashboard-dialog[open] { display: flex; flex-direction: column; overflow: hidden; }
+.dashboard-dialog::backdrop { background: #020812de; }
+html:has(.dashboard-dialog[open]) { overflow: hidden; }
+
+.dashboard-dialog__toolbar,
+.dashboard-dialog__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem .75rem;
+}
+
+.dashboard-dialog__toolbar {
+  flex: none;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.dashboard-dialog__toolbar h2 { font-size: clamp(1.15rem, 3vw, 1.6rem); }
+
+.dashboard-dialog__viewport {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  max-height: min(74dvh, 50rem);
+  min-height: 0;
+  padding: .5rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--paper);
+}
+
+.dashboard-dialog__viewport:focus-visible { outline-offset: -4px; }
+
+.dashboard-dialog__viewport img {
+  width: auto;
+  height: auto;
+  max-height: min(74dvh - 1rem, 49rem);
+  object-fit: contain;
+}
+
+.dashboard-dialog__viewport[data-actual-size] {
+  display: block;
+  height: min(74dvh, 50rem);
+}
+.dashboard-dialog__viewport[data-actual-size] img { max-width: none; max-height: none; }
 
 figcaption {
   max-width: 60rem;
@@ -615,6 +696,7 @@ figcaption {
     gap: .9rem;
   }
 
+  .case-figure .workflow__steps li:not(:last-child)::before,
   .case-figure .workflow__steps li:not(:last-child)::after {
     top: 100%;
     left: 1.2rem;
@@ -703,6 +785,38 @@ figcaption {
     translate: none;
     opacity: 1;
   }
+
+  .workflow[data-beam-active] .workflow__steps li:not(:last-child)::before {
+    --beam-angle: 90deg;
+    --beam-start: 100% 50%;
+    --beam-end: 0% 50%;
+    z-index: 1;
+    height: 3px;
+    translate: 0 -1px;
+    background: linear-gradient(var(--beam-angle), transparent 39%, var(--accent) 45%, var(--ink) 50%, var(--accent) 55%, transparent 61%);
+    background-size: 300% 100%;
+    filter: drop-shadow(0 1px 2px #84c5ff);
+    animation: portfolio-workflow-beam 540ms ease-out calc(var(--workflow-step) * 340ms) both;
+    content: "";
+  }
+}
+
+@media (max-width: 49rem) and (prefers-reduced-motion: no-preference) {
+  .workflow[data-beam-active] .workflow__steps li:not(:last-child)::before {
+    --beam-angle: 180deg;
+    --beam-start: 50% 100%;
+    --beam-end: 50% 0%;
+    width: 3px;
+    height: calc(.9rem + 2px);
+    translate: -1px 0;
+    background-size: 100% 300%;
+  }
+}
+
+@keyframes portfolio-workflow-beam {
+  from { background-position: var(--beam-start); opacity: 0; }
+  20%, 80% { opacity: 1; }
+  to { background-position: var(--beam-end); opacity: 0; }
 }
 
 @keyframes portfolio-name-enter {
