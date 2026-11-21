@@ -1,9 +1,11 @@
 title: Aaditya Mandal
-description: "Purdue MSBAIM portfolio on customer retention, credit risk, and campus operations."
+description: "Aaditya Mandal’s portfolio in strategy, analytics, and decision science."
 url: "https://aadimandal.github.io"
 baseurl: ""
 language: en
 linkedin: "https://www.linkedin.com/in/aaditya-mandal-390a44405"
+github_profile: "https://github.com/aadimandal"
+professional_email: "mandal37@purdue.edu"
 image: /assets/img/aaditya-mandal.jpg
 markdown: kramdown
 theme: null
@@ -12,6 +14,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - THIRD-PARTY-NOTICES.md
   - node_modules
   - package.json
   - package-lock.json

@@ -3,27 +3,26 @@ layout: case-study
 title: Credit Risk & Customer Profitability Analytics
 project: credit-risk
 permalink: /projects/credit-risk/
-description: "A credit portfolio analysis that ranks accounts for review and simulates risk and profitability tradeoffs."
-lede: "With limited review capacity, which accounts should a lender look at first, and what would a tighter or looser credit policy change?"
+description: "A historical credit portfolio analysis on how to prioritize account review and compare policy tradeoffs."
+lede: "When a risk team can review only part of a portfolio, which accounts should get its attention first?"
 image: /assets/img/credit-risk-dashboard.png
 image_alt: "Tableau dashboard for credit risk and customer profitability."
 metrics:
   - value: "30,000"
-    label: Anonymized credit card records
-    animate: true
+    label: Anonymized credit card customer records
   - value: "0.779"
-    label: Holdout ROC-AUC
+    label: ROC-AUC on a 6,000-record holdout
   - value: "3.15×"
     label: Default lift in the highest-risk holdout decile
 ---
 <div class="case-grid">
   <section aria-labelledby="problem">
-    <h2 id="problem">Business problem</h2>
-    <p>Reviewing accounts in an arbitrary order can bury borrowers at higher risk of default. A lender also needs to understand how changes to approval and monitoring rules could affect volume, potential losses, and risk-adjusted profitability.</p>
+    <h2 id="problem">The business question</h2>
+    <p>A risk team needs to know how many accounts that later defaulted would have surfaced at each level of review capacity. Policy teams face a related question. Tightening a rule changes the number of accounts approved and the risks the portfolio retains. I used the same portfolio to examine both decisions.</p>
   </section>
   <section aria-labelledby="role">
-    <h2 id="role">My role</h2>
-    <p>I built the SQL portfolio analysis and Python model pipeline, compared credit-policy scenarios, and created a Tableau dashboard to communicate risk concentration and policy tradeoffs.</p>
+    <h2 id="role">My contribution</h2>
+    <p>I built the SQL analysis in DuckDB and the Python modeling pipeline. I profiled exposure, expected-loss proxies, and profitability proxies, then compared logistic regression, random forest, and histogram gradient boosting on a stratified holdout. I used Tableau to show the review and approval tradeoffs. <a href="https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients">UCI dataset</a>.</p>
   </section>
 </div>
 
@@ -35,8 +34,8 @@ metrics:
     </a>
   </div>
   <figcaption>
-    <p>The Tableau export shows default rates by risk decile, default and loss capture, and simulated policy tradeoffs. Its 3.39× top-decile lift is for full-portfolio validation, where the highest-risk decile had a 75.03% observed default rate versus 22.12% across the portfolio.</p>
-    <a class="metal-button metal-button--compact figure-action" href="{{ credit.image | relative_url }}" data-dashboard-zoom>Enlarge dashboard</a>
+    <p>The Tableau dashboard uses the full portfolio. The highest-risk decile had a 75.03% observed default rate versus 22.12% overall, equivalent to 3.39× lift in full-portfolio validation. The policy frontier compares simulated approval rates and profitability proxies.</p>
+    <a class="button button--compact figure-action" href="{{ credit.image | relative_url }}" data-dashboard-zoom>Enlarge dashboard</a>
   </figcaption>
 </figure>
 
@@ -44,26 +43,29 @@ metrics:
   <div class="dashboard-dialog__toolbar">
     <h2 id="dashboard-heading">Credit risk dashboard</h2>
     <div class="dashboard-dialog__actions">
-      <button class="metal-button metal-button--compact" type="button" aria-controls="dashboard-image-view" data-dashboard-size>Actual size</button>
+      <button class="button button--compact" type="button" aria-controls="dashboard-image-view" data-dashboard-size>Actual size</button>
       <form method="dialog">
-        <button class="metal-button metal-button--compact" autofocus>Close</button>
+        <button class="button button--compact" type="submit" autofocus>Close</button>
       </form>
     </div>
   </div>
-  <div class="dashboard-dialog__viewport" id="dashboard-image-view" role="region" aria-label="Dashboard image" tabindex="0">
+  <section class="dashboard-dialog__viewport" id="dashboard-image-view" aria-label="Dashboard image" tabindex="0">
     <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
-  </div>
+  </section>
 </dialog>
 
-<div class="case-grid">
-  <section aria-labelledby="method">
-    <h2 id="method">Method</h2>
-    <p>I used the UCI Default of Credit Card Clients dataset. I profiled exposure, expected loss, and profitability proxies in DuckDB, then compared logistic regression, random forest, and histogram gradient boosting. The strongest model achieved a holdout ROC-AUC of 0.779 and 3.15× default lift in the highest-risk holdout decile.</p>
-    <p>I simulated conservative, balanced, and growth-oriented policies to compare approval volume, default capture, and risk-adjusted profit proxies under different screening rules.</p>
+<div class="case-grid case-analysis">
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the holdout showed</h2>
+    <p>Histogram gradient boosting led the comparison. Its highest-risk holdout decile defaulted at 69.67%, against 22.12% across the holdout, for 3.15× lift. This showed how a ranked queue could concentrate a limited review effort on accounts with more observed defaults. <a href="https://github.com/aadimandall/credit-risk-customer-profitability-analytics/blob/main/data/processed/model_outputs/_executive_model_summary.md">Holdout evaluation</a>.</p>
   </section>
   <section aria-labelledby="decision">
-    <h2 id="decision">Decision informed</h2>
-    <p>The risk ranking showed how to direct review toward accounts with greater predicted default risk. In the full-portfolio validation, a 0.150 monitoring threshold flagged 49.94% of accounts and captured 86.38% of historical defaults.</p>
-    <p>That threshold illustrates a review-capacity tradeoff using historical data. Loss and profit are proxy estimates because the dataset lacks actual pricing, recoveries, and charge-offs. The policy scenarios support portfolio comparison.</p>
+    <h2 id="decision">How to size the review queue</h2>
+    <p>In the full-portfolio analysis, a monitoring threshold of 0.150 flagged 49.94% of accounts and captured 86.38% of historical defaults. I compared conservative, balanced, and growth-oriented scenarios to show what changes as a team accepts more accounts or allocates more reviews. The threshold provides a reference point for capacity planning.</p>
   </section>
 </div>
+
+<section class="case-limitations" aria-labelledby="limits">
+  <h2 id="limits">What a lender would still need to test</h2>
+  <p>The full-portfolio view includes training records, and I used the holdout to select the model. A lender would need to validate performance on a later, independent sample, check results across customer groups, and size the cutoff to its review capacity. The financial scenarios use proxies because the data lacks actual pricing, recoveries, and charge-offs.</p>
+</section>

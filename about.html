@@ -2,61 +2,40 @@
 layout: page
 title: About me
 permalink: /about/
-description: "Aaditya Mandal’s path from NCAA Division I track and campus operations to decision science at Purdue."
-lede: "I came to analytics through track and campus operations. Both taught me to pay attention to what happens between making a plan and carrying it out."
+description: "How Aaditya Mandal’s background in quantitative economics, Division I track, and campus operations shapes his analytical work at Purdue."
+lede: "Managing campus recreation shaped how I think about analytics. A recommendation has to fit the schedule, the people, and the conditions they’re working in."
 ---
-<div class="story">
-  <p>I competed as an NCAA Division I sprinter at UC Riverside while studying quantitative economics and econometrics. In campus recreation, I supervised student staff and coordinated games, facility capacity, and participant flow. I started using Excel and R to see where games were getting delayed and to give the team something concrete to work from when we changed coverage or schedules.</p>
-  <p>At Purdue, I bring that same mindset to decisions about customers, risk, and staffing. I want to know what a decision costs, what the people implementing it can control, and what evidence would make us change course. I’m pursuing roles in strategy and analytics, decision science, and operations analytics.</p>
-</div>
-
-<div class="about-grid">
-  <section aria-labelledby="experience-title">
-    <h2 id="experience-title">Selected experience</h2>
-    <div class="timeline">
-      <div>
-        <h3>Strategy &amp; Analytics Consultant</h3>
-        <p class="item-meta">Purdue Industry Practicum · Since August 2026</p>
-        <p>I work on demand forecasting and workforce planning, translating forecasts into staffing scenarios a team can compare.</p>
-      </div>
-      <div>
-        <h3>Business Analyst Intern</h3>
-        <p class="item-meta">The Global Career Accelerator · March–June 2026</p>
-        <p>I analyzed bank customer behavior to identify cross-sell opportunities and examined sales data for margin lost to discounting.</p>
-      </div>
-      <div>
-        <h3>Operations Manager</h3>
-        <p class="item-meta">UC Riverside Campus Recreation · September 2023–June 2026</p>
-        <p>I supervised student staff and built reports on staffing, participation, and schedule performance to support weekly operations planning.</p>
-      </div>
-      <div>
-        <h3>Business Operations Coordinator</h3>
-        <p class="item-meta">UC Riverside School of Business · June 2024–June 2025</p>
-        <p>I built an Excel tracker for transaction volume, queue times, and staffing coverage to help plan for fee-deadline surges.</p>
-      </div>
-    </div>
-  </section>
-  <div>
-    <section aria-labelledby="education-title">
-      <h2 id="education-title">Education</h2>
-      <div class="timeline">
-        <div>
-          <h3>Purdue University</h3>
-          <p>Daniels School of Business<br>MS in Business Analytics and Information Management<br><span class="item-meta">Expected August 2027</span></p>
-        </div>
-        <div>
-          <h3>University of California, Riverside</h3>
-          <p>BA in Quantitative Economics and Econometrics<br><span class="item-meta">June 2026</span></p>
-        </div>
-      </div>
+<div class="about-story">
+  <div class="story">
+    <section aria-labelledby="on-the-ground">
+      <h2 id="on-the-ground">Learning on the ground</h2>
+      <p>At UC Riverside, I studied quantitative economics and econometrics and competed as an NCAA Division I sprinter. In class, I learned to ask what the evidence could explain. On the track, I learned to pay attention to how consistently I could execute a plan. I needed both habits when I began managing campus recreation.</p>
+      <p>I supervised 15–20 student employees across 8–12 leagues and open recreation blocks each week. When late starts kept recurring, I built Excel and R reports so we could see where staffing and the schedule were falling out of sync. I recommended format changes and supported the team’s staffing and scheduling adjustments. Over two quarters, the recreation operation cut late starts by 20% and maintained 95%+ on-time game completion.</p>
+      <p>I used the same approach in the School of Business, where an Excel tracker showed fee-deadline traffic could reach two to three times normal volume. I recommended changes to staffing and service-window assignments. The operation reduced peak waits by about 25% during high-demand periods and cut corrections by about 15% per 1,000 transactions.</p>
     </section>
-    <section class="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title">Skills in practice</h2>
-      <ul>
-        <li><strong>Python and SQL</strong> for building customer-level datasets, training models, and simulating policies.</li>
-        <li><strong>Tableau</strong> for showing how risk rankings and policy thresholds affect portfolio review.</li>
-        <li><strong>Excel and R</strong> for tracking service flow and building reports for weekly staffing decisions.</li>
-      </ul>
+    <section aria-labelledby="purdue-now">
+      <h2 id="purdue-now">From a forecast to a plan</h2>
+      <p>In Purdue’s Industry Practicum, I work on demand forecasting and use optimization to compare staffing plans. I’m interested in what happens when a forecast has to become a schedule. Who is available to work? What coverage can the team provide? How much does the plan depend on the forecast being right?</p>
+      <p>Through a project-based business analyst internship with The Global Career Accelerator, I evaluated cross-sell opportunities in banking data and looked at how discounting affected gross margins. My independent work goes deeper into retention economics and credit policy. I use Python and SQL to make it possible to rerun the analysis and Tableau to show how the recommendation changes when assumptions move.</p>
     </section>
   </div>
+  <aside class="about-credentials" aria-labelledby="education">
+    <h2 id="education">Education</h2>
+    <div>
+      <h3>Purdue University</h3>
+      <p>Daniels School of Business</p>
+      <p>MS in Business Analytics and Information Management</p>
+      <p class="item-meta">Expected August 2027</p>
+    </div>
+    <div>
+      <h3>University of California, Riverside</h3>
+      <p>BA in Quantitative Economics and Econometrics</p>
+      <p class="item-meta">June 2026</p>
+    </div>
+    <div class="about-credentials__note">
+      <a class="text-link" href="{{ '/' | relative_url }}#projects">Explore my work</a>
+    </div>
+  </aside>
 </div>
+
+{% include contact.html %}

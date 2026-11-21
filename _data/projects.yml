@@ -1,7 +1,9 @@
 - slug: customer-retention
   title: Customer Revenue Recovery & Retention ROI Engine
   area: Retention strategy
-  summary: Ranked paid retention offers by expected value and designed a controlled test around a proposed $750K budget cap.
+  short_area: Retention
+  question: Who should receive a paid offer, and what would justify spending more?
+  contribution: I combined churn risk, customer value, and offer cost to build an eligibility screen and propose a controlled test.
   url: /projects/customer-retention/
   dashboard: https://public.tableau.com/app/profile/aaditya.mandal/viz/CustomerRevenueRecoveryRetentionROIDashboard/ModelConfidenceGovernanceBoard
   repository: https://github.com/aadimandall/customer-revenue-recovery-retention-ROI-engine-
@@ -19,7 +21,9 @@
 - slug: credit-risk
   title: Credit Risk & Customer Profitability Analytics
   area: Portfolio risk
-  summary: Used default-risk scores to prioritize account review and compare the tradeoffs of different credit policies.
+  short_area: Credit risk
+  question: Which accounts should a credit team review first when capacity is limited?
+  contribution: I built the risk ranking and simulated how screening policies would change review volume, default capture, and modeled profitability.
   url: /projects/credit-risk/
   dashboard: https://public.tableau.com/app/profile/aaditya.mandal/viz/PROJECT1_17820986935880/Dashboard1
   repository: https://github.com/aadimandall/credit-risk-customer-profitability-analytics
@@ -28,7 +32,9 @@
 - slug: operations
   title: Operations KPI & Service-Flow Analytics
   area: Campus operations
-  summary: Used nightly recreation data to inform staffing and scheduling changes that helped the operation start more games on time.
+  short_area: Operations
+  question: How could a recreation team get more games started on time during its busiest hours?
+  contribution: I tracked nightly performance, found recurring coverage and scheduling issues, and supported the team’s adjustments.
   url: /projects/operations/
   workflow_title: Recreation operations workflow
   workflow_alt: Log nightly recreation metrics, review weekly KPI reports for late starts and staffing gaps, then use the findings to adjust coverage and schedules.

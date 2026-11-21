@@ -1,0 +1,27 @@
+{% assign visual_project = include.project %}
+{% case visual_project.slug %}
+{% when 'customer-retention' %}
+<figure class="work-visual work-visual--retention">
+  <dl class="screening-bars">
+    <div>
+      <dt>Customers scored</dt>
+      <dd>970,960</dd>
+    </div>
+    <div class="screening-bars__eligible">
+      <dt>Positive-value paid-offer candidates</dt>
+      <dd>71,437</dd>
+    </div>
+  </dl>
+  <figcaption>Paid-offer eligibility under base-case planning assumptions.</figcaption>
+</figure>
+{% when 'credit-risk' %}
+<figure class="work-visual work-visual--credit">
+  <img src="{{ visual_project.image | relative_url }}" alt="{{ visual_project.image_alt | escape }}" width="2402" height="1824" loading="lazy" decoding="async">
+  <figcaption><strong>3.15×</strong> default lift in the highest-risk holdout decile. The Tableau export shows 3.39× top-decile lift for full-portfolio validation.</figcaption>
+</figure>
+{% when 'operations' %}
+<figure class="work-visual work-visual--operations">
+  {% include workflow.html project=visual_project compact=true %}
+  <figcaption><strong>20% fewer late starts</strong> over two quarters. The operation maintained 95%+ on-time game completion.</figcaption>
+</figure>
+{% endcase %}

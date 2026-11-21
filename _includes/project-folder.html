@@ -1,0 +1,12 @@
+{% assign folder_project = include.project %}
+<details class="project-folder">
+  <summary>
+    <span class="folder-icon" aria-hidden="true"></span>
+    <span>Project resources<span class="sr-only"> for {{ folder_project.title | escape }}</span></span>
+  </summary>
+  <ul>
+    {% if folder_project.dashboard %}<li><a href="{{ folder_project.dashboard }}">Tableau dashboard</a></li>{% endif %}
+    {% if folder_project.repository %}<li><a href="{{ folder_project.repository }}">Project repository</a></li>{% endif %}
+    {% if folder_project.slug == 'operations' %}<li><a href="{{ folder_project.url | relative_url }}#workflow">Recreation workflow</a></li>{% endif %}
+  </ul>
+</details>

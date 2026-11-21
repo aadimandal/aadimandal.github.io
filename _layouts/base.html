@@ -7,6 +7,8 @@
   {% include nav.html %}
   {{ content }}
   {% include footer.html %}
+  {% if page.layout == 'case-study' or page.body_class == 'home' %}
   <script defer src="{{ '/assets/js/portfolio-interactions.js' | relative_url }}"></script>
+  {% endif %}
 </body>
 </html>

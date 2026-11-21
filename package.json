@@ -2,16 +2,10 @@
   "name": "aaditya-mandal-portfolio",
   "private": true,
   "scripts": {
-    "build:ui": "tsc --noEmit && esbuild _frontend/portfolio-interactions.tsx --bundle --minify --format=iife --define:process.env.NODE_ENV=\"'production'\" --legal-comments=linked --outfile=assets/js/portfolio-interactions.js"
-  },
-  "dependencies": {
-    "@paper-design/shaders": "0.0.82",
-    "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "check:ui": "tsc --noEmit",
+    "build:ui": "npm run check:ui && esbuild _frontend/portfolio-interactions.ts --bundle --minify --format=iife --outfile=assets/js/portfolio-interactions.js"
   },
   "devDependencies": {
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0",
     "esbuild": "0.28.2",
     "typescript": "5.9.3"
   }

@@ -3,43 +3,47 @@ layout: case-study
 title: Customer Revenue Recovery & Retention ROI Engine
 project: customer-retention
 permalink: /projects/customer-retention/
-description: "A retention decision engine that screens paid offers by expected net value and sizes a proposed controlled test."
-lede: "Which customers warrant a paid retention offer, and how much should the business commit before it knows whether the offer works?"
+description: "An offer strategy that connects churn risk to customer value, tests a range of budgets, and defines a controlled experiment."
+lede: "Which customers are worth a paid offer, and how much should a retention team commit before it knows whether the offer changes behavior?"
 metrics:
   - value: "970,960"
-    label: Customers scored
+    label: Customer records scored
   - value: "71,437"
-    label: Positive-value paid-offer candidates
-    animate: true
+    label: Positive-value paid-offer candidates under base assumptions
   - value: "$750K"
     label: Proposed test budget cap
 ---
 <div class="case-grid">
   <section aria-labelledby="problem">
-    <h2 id="problem">Business problem</h2>
-    <p>Retention budgets are finite. Some high-risk customers have too little value at stake to justify a discount, and some people who accept an offer would have stayed anyway. The business needed a way to prioritize spend and measure incremental impact.</p>
+    <h2 id="problem">The business question</h2>
+    <p>Churn risk identifies customers who may leave. A paid offer has to clear a second test. The value of keeping the customer, adjusted for the chance the offer works, has to cover its cost. A broad campaign can spend on customers who would have stayed anyway, or pay more for an offer than the relationship is worth.</p>
   </section>
   <section aria-labelledby="role">
-    <h2 id="role">My role</h2>
-    <p>I built the customer-level dataset, estimated profit-adjusted customer lifetime value (CLV), trained and validated the churn model, and turned the scores into an offer screen, a budget simulation, and an A/B test plan.</p>
+    <h2 id="role">My contribution</h2>
+    <p>I built the customer-level analysis in Python and SQL, estimated profit-adjusted lifetime value, and trained and validated the churn model. I used those inputs to design the offer screen, simulate budget tradeoffs, and specify how a controlled test would measure incremental value.</p>
   </section>
 </div>
 
 {% assign retention = site.data.projects | where: 'slug', page.project | first %}
 <figure class="case-figure case-figure--retention">
   {% include workflow.html project=retention %}
-  <figcaption>The workflow moves from risk and value estimates to an offer screen, a simulated budget, and a proposed experiment with treatment and control groups.</figcaption>
+  <figcaption>The offer screen combines modeled churn risk, profit-adjusted customer lifetime value, assumed response, and intervention cost. The resulting shortlist feeds the budget simulation and the proposed randomized test.</figcaption>
 </figure>
 
-<div class="case-grid">
-  <section aria-labelledby="method">
-    <h2 id="method">Method</h2>
-    <p>Using Python and SQL, I combined predicted churn, a profit-adjusted CLV proxy, and lifecycle context. I checked how the model’s ranking held up after removing direct cancellation signals. For paid offers, I multiplied churn probability by the CLV proxy and the assumed intervention response rate, then subtracted estimated offer cost.</p>
-    <p>I varied response rates, costs, and budget limits. Under base-case assumptions, 71,437 of 970,960 scored customers cleared the paid-offer screen. The $750K cap captured 99.99% of the maximum net value in the tested budget range. That figure is a simulation result based on value and cost proxies.</p>
+<div class="case-grid case-analysis">
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">What the simulation showed</h2>
+    <p>I tested how well the model ranked risk after removing direct cancellation signals, then estimated net save value by subtracting intervention cost from the expected value saved. Under the base assumptions, 7.36% of scored customers cleared the paid-offer screen.</p>
+    <p>Targeting all positive-value candidates produced an estimated <strong>$15.83 million in net save-value proxy</strong> at <strong>20.0× modeled paid-offer ROI</strong>. The ROI expresses modeled net save value per dollar of estimated offer cost.</p>
   </section>
   <section aria-labelledby="decision">
-    <h2 id="decision">Decision informed</h2>
-    <p>I proposed a stratified A/B test using 62,836 eligible customers, planned around the $750K cap. Treatment would receive the offer and control would establish how much retention would have happened anyway.</p>
-    <p>The rollout criteria require lower churn, positive incremental net value, and acceptable customer-experience measures. The project ended with the proposed test design and modeled economics.</p>
+    <h2 id="decision">Where to set the budget</h2>
+    <p>The $750K point captured 99.99% of the maximum net value across the budgets tested in the simulation. I used that point to size a proposed experiment with 62,836 eligible customers and stratified treatment and control groups.</p>
+    <p>The decision to scale would depend on lower churn, positive incremental net value, and customer-experience measures meeting the test’s criteria.</p>
   </section>
 </div>
+
+<section class="case-limitations" aria-labelledby="limits">
+  <h2 id="limits">What the experiment would establish</h2>
+  <p>Response, lifetime value, and offer cost are model inputs. The financial figures describe a planning scenario. A randomized holdout would show how many customers stayed because of the offer, giving the team a basis for deciding whether to scale, revise, or stop the program.</p>
+</section>
