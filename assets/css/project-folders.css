@@ -1,0 +1,219 @@
+/*
+ * Glassmorphism Folder Cards design by Kedhareswer Naidu on 21st.dev.
+ * Adapted to native HTML disclosure and CSS. See THIRD-PARTY-NOTICES.md.
+ */
+.project-folder.project-folder--glass {
+  --folder-blue: 119 171 202;
+  --folder-sheet: #264758;
+  --folder-pocket-height: 3.15rem;
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 24rem);
+  margin-top: .8rem;
+  border: 0;
+  background: transparent;
+}
+
+.project-row--credit-risk .project-folder--glass {
+  --folder-blue: 131 155 209;
+  --folder-sheet: #293e60;
+}
+
+.project-row--operations .project-folder--glass {
+  --folder-blue: 127 174 167;
+  --folder-sheet: #29494e;
+}
+
+.project-folder--glass > .project-folder__summary {
+  position: relative;
+  display: flex;
+  min-height: 5.85rem;
+  align-items: flex-end;
+  padding: 0 2.25rem .32rem .68rem;
+  border-radius: .58rem;
+  color: var(--ink);
+  font-size: .92rem;
+  font-weight: 640;
+  list-style: none;
+  cursor: pointer;
+}
+
+.project-folder__summary::-webkit-details-marker { display: none; }
+.project-folder--glass[open] > .project-folder__summary { min-height: 7.85rem; }
+.project-folder--glass > .project-folder__summary:focus-visible { outline-offset: .2rem; }
+.project-folder--glass > .project-folder__summary:hover,
+.project-folder--glass[open] > .project-folder__summary { color: var(--gold); }
+
+.project-folder--glass > .project-folder__summary::after {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.2rem;
+  width: .5rem;
+  height: .5rem;
+  margin: 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  color: var(--gold);
+  transform: rotate(45deg);
+  content: "";
+}
+
+.project-folder--glass[open] > .project-folder__summary::after {
+  bottom: .98rem;
+  transform: rotate(225deg);
+}
+
+.project-folder__back,
+.project-folder__front,
+.project-folder__sheet {
+  position: absolute;
+  pointer-events: none;
+}
+
+.project-folder__back {
+  inset: auto 0 .14rem;
+  height: var(--folder-pocket-height);
+  border: 1px solid rgb(var(--folder-blue) / .45);
+  border-radius: .35rem .5rem .55rem .42rem;
+  background: linear-gradient(160deg, rgb(var(--folder-blue) / .33), transparent 60%), var(--deep);
+}
+
+.project-folder__back::before {
+  position: absolute;
+  top: -.76rem;
+  left: -1px;
+  width: 32%;
+  height: .95rem;
+  border: 1px solid rgb(var(--folder-blue) / .56);
+  border-bottom-color: transparent;
+  border-radius: .44rem .68rem 0 0;
+  background: var(--folder-sheet);
+  content: "";
+}
+
+.project-folder__sheet {
+  inset: auto 19% 1.52rem 13%;
+  height: 2.5rem;
+  border: 1px solid rgb(var(--folder-blue) / .6);
+  border-radius: .3rem;
+  background: linear-gradient(145deg, rgb(var(--folder-blue) / .24), transparent 82%), var(--folder-sheet);
+  box-shadow: 0 .26rem .65rem #071520a0;
+  transform: rotate(-4deg);
+}
+
+.project-folder__sheet--offset {
+  right: 11%;
+  left: 27%;
+  transform: rotate(5deg);
+}
+
+.project-folder__sheet::before {
+  position: absolute;
+  top: .49rem;
+  left: .72rem;
+  width: 33%;
+  height: .14rem;
+  border-radius: 1rem;
+  background: rgb(var(--folder-blue) / .45);
+  box-shadow: 0 .28rem rgb(var(--folder-blue) / .26);
+  content: "";
+}
+
+.project-folder__front {
+  inset: auto 0 0;
+  height: var(--folder-pocket-height);
+  border: 1px solid rgb(var(--folder-blue) / .63);
+  border-radius: .34rem .7rem .56rem .56rem;
+  background: linear-gradient(145deg, rgb(var(--folder-blue) / .38), rgb(var(--folder-blue) / .1) 39%, #11232ee8 82%);
+  box-shadow: inset 0 1px 0 #f3f8ff30, inset 0 -1px 0 #07111f6b, 0 .33rem .7rem #08131b58;
+  backdrop-filter: blur(6px);
+  transform-origin: bottom center;
+}
+
+.project-folder--glass .project-folder__label {
+  position: relative;
+  z-index: 1;
+  min-height: 2.45rem;
+  padding: .4rem .72rem;
+  line-height: 1.45;
+}
+
+.project-folder--glass:is([open], :focus-within) .project-folder__front {
+  transform: perspective(42rem) rotateX(-9deg);
+}
+
+.project-folder--glass[open] .project-folder__sheet { visibility: hidden; }
+
+.project-folder--glass:not([open]) > .project-folder__files { display: none; }
+
+.project-folder--glass[open] > .project-folder__files {
+  position: absolute;
+  z-index: 2;
+  inset: 1.12rem .82rem auto;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: .62rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+.project-folder__files > li:last-child:nth-child(2) { transform: rotate(3deg); }
+.project-folder__files > li:first-child:nth-last-child(2) { transform: rotate(-3deg); }
+
+.project-folder--glass .project-folder__files a {
+  display: flex;
+  min-height: 3.1rem;
+  height: 100%;
+  align-items: center;
+  padding: .48rem .68rem;
+  border: 1px solid rgb(var(--folder-blue) / .7);
+  border-radius: .29rem;
+  background: linear-gradient(150deg, rgb(var(--folder-blue) / .2), transparent 70%), var(--folder-sheet);
+  box-shadow: inset 0 1px 0 #eef9ff22, 0 .25rem .75rem #08131b80;
+  color: var(--ink);
+  font-size: .88rem;
+  font-weight: 620;
+  line-height: 1.28;
+  text-decoration-color: rgb(var(--folder-blue) / .9);
+  text-underline-offset: .2em;
+}
+
+.project-folder--glass .project-folder__files a:is(:hover, :focus-visible) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+@media (hover: hover) {
+  .project-folder--glass:not([open]) > .project-folder__summary:hover .project-folder__front {
+    transform: perspective(42rem) rotateX(-9deg);
+  }
+
+  .project-folder--glass:not([open]) > .project-folder__summary:hover .project-folder__sheet {
+    transform: translateY(-.2rem) rotate(-5deg);
+  }
+
+  .project-folder--glass:not([open]) > .project-folder__summary:hover .project-folder__sheet--offset {
+    transform: translateY(-.3rem) rotate(7deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .project-folder__front, .project-folder__sheet { transition: transform .2s ease; }
+}
+
+@media (forced-colors: active) {
+  .project-folder__back,
+  .project-folder__back::before,
+  .project-folder__front,
+  .project-folder__sheet {
+    border-color: ButtonText;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .project-folder--glass .project-folder__files a { border-color: LinkText; }
+}

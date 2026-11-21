@@ -1,0 +1,113 @@
+.case-reading__body { min-width: 0; }
+
+.case-intro .back-link { display: inline-flex; }
+
+.case-index {
+  margin-bottom: 1.35rem;
+  padding-block: .8rem;
+  border-block: 1px solid var(--line);
+}
+
+.case-index__label {
+  color: var(--subtle);
+  font-size: .88rem;
+  font-weight: 660;
+}
+
+.case-index ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .55rem;
+  margin: .55rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-index .button { min-height: 2.4rem; }
+
+.case-index .button[aria-current] {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+
+.metric-ticker {
+  display: inline-grid;
+  white-space: nowrap;
+}
+
+.metric-ticker::before,
+.metric-ticker > span { grid-area: 1 / 1; }
+
+.metric-ticker::before {
+  content: attr(data-metric-ticker);
+  visibility: hidden;
+}
+
+@media (min-width: 62rem) {
+  .case-reading {
+    display: grid;
+    grid-template-columns: minmax(10.75rem, .21fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(1.8rem, 4vw, 3.2rem);
+  }
+
+  .case-index {
+    position: sticky;
+    top: 1.4rem;
+    margin: 0;
+    padding-block: 1rem 0;
+    border-block-end: 0;
+  }
+
+  .case-index ul {
+    display: grid;
+    gap: .45rem;
+    margin-top: .65rem;
+  }
+
+  .case-index .button {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .case-figure[data-beam-active] .workflow__steps li:not(:last-child)::before {
+    --beam-angle: 90deg;
+    --beam-start: 100% 50%;
+    --beam-end: 0% 50%;
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 1px);
+    left: 100%;
+    width: calc(1.1rem + 2px);
+    height: 3px;
+    background: linear-gradient(var(--beam-angle), transparent 40%, var(--gold) 46%, var(--ink) 50%, var(--gold) 54%, transparent 60%);
+    background-size: 300% 100%;
+    animation: case-workflow-beam 500ms ease-out var(--beam-delay, 0ms) both;
+    content: "";
+  }
+
+  .case-figure[data-beam-active] .workflow__steps li:nth-child(2) { --beam-delay: 280ms; }
+  .case-figure[data-beam-active] .workflow__steps li:nth-child(3) { --beam-delay: 560ms; }
+
+  @keyframes case-workflow-beam {
+    from { background-position: var(--beam-start); opacity: 0; }
+    20%, 80% { opacity: 1; }
+    to { background-position: var(--beam-end); opacity: 0; }
+  }
+}
+
+@media (max-width: 52rem) and (prefers-reduced-motion: no-preference) {
+  .case-figure[data-beam-active] .workflow__steps li:not(:last-child)::before {
+    --beam-angle: 180deg;
+    --beam-start: 50% 100%;
+    --beam-end: 50% 0%;
+    top: 100%;
+    left: calc(1.2rem - 1px);
+    width: 3px;
+    height: calc(.8rem + 2px);
+    background-size: 100% 300%;
+  }
+}

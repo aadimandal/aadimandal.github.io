@@ -14,4 +14,12 @@
   <meta property="og:image" content="{{ page.image | default: site.image | absolute_url }}">
   <meta property="og:image:alt" content="{{ page.image_alt | default: 'Portrait of Aaditya Mandal' | escape }}">
   <link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/component-finishes.css' | relative_url }}">
+  {% if page.body_class == 'home' %}
+  <link rel="stylesheet" href="{{ '/assets/css/project-folders.css' | relative_url }}">
+  {% elsif page.url == '/about/' %}
+  <link rel="stylesheet" href="{{ '/assets/css/experience-timeline.css' | relative_url }}">
+  {% elsif page.layout == 'case-study' %}
+  <link rel="stylesheet" href="{{ '/assets/css/case-components.css' | relative_url }}">
+  {% endif %}
 </head>

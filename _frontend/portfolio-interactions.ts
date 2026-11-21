@@ -1,6 +1,14 @@
-import { enhanceDashboardZoom } from "./case-study-interactions";
+import { enhanceDashboardZoom, enhanceCaseIndex, enableCaseStudyMotion } from "./case-study-interactions";
 
+import { enhanceLiquidMetal } from "./liquid-metal-controls";
+import { enhanceHeroHandoff } from "./portfolio-motion";
+
+const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+enhanceLiquidMetal(motion);
+enhanceHeroHandoff(motion);
 enhanceDashboardZoom();
+enhanceCaseIndex();
+enableCaseStudyMotion(motion);
 
 const projectLinks = new Map<Element, HTMLAnchorElement>();
 for (const link of document.querySelectorAll<HTMLAnchorElement>("[data-work-index] a")) {

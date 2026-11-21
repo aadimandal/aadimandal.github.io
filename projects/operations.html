@@ -8,12 +8,13 @@ lede: "How can a recreation team make evening schedules more reliable while mana
 metrics:
   - value: "20%"
     label: Reduction in late game starts over two quarters
+    animate: true
   - value: "95%+"
     label: On-time game completion maintained
 ---
 <div class="case-grid">
   <section aria-labelledby="problem">
-    <h2 id="problem">Where the schedule broke down</h2>
+    <h2 id="problem" tabindex="-1">Where the schedule broke down</h2>
     <p>At UC Riverside, staff had to keep games moving through busy evening blocks while managing facility capacity and participant flow. Repeated late starts signaled a scheduling problem. We needed to see when delays clustered and where coverage or league formats could be adjusted.</p>
   </section>
   <section aria-labelledby="role">
@@ -23,12 +24,12 @@ metrics:
 </div>
 
 {% assign operations = site.data.projects | where: 'slug', page.project | first %}
-<figure id="workflow" class="case-figure case-figure--operations">
+<figure id="workflow" class="case-figure case-figure--operations" tabindex="-1" data-workflow-beam>
   {% include workflow.html project=operations %}
   <figcaption>Nightly tracking fed weekly planning. Reviewing starts, completions, and staffing coverage together helped the team see where timing problems recurred and identify changes it could make.</figcaption>
 </figure>
 
-<div class="case-grid case-analysis">
+<div class="case-grid case-analysis" id="method" tabindex="-1">
   <section aria-labelledby="evidence">
     <h2 id="evidence">From nightly logs to weekly decisions</h2>
     <p>I tracked participation, forfeits, incidents, staffing coverage, and schedule performance. In the weekly reviews, I surfaced repeated late starts, peak-window bottlenecks, and coverage gaps. The reports also indicated which league formats saw recurring bottlenecks.</p>
@@ -40,6 +41,6 @@ metrics:
 </div>
 
 <section class="case-limitations" aria-labelledby="limits">
-  <h2 id="limits">What I took from the work</h2>
+  <h2 id="limits" tabindex="-1">What I took from the work</h2>
   <p>The timing metrics reflect the team’s performance across the changes. Isolating the effect of one adjustment would require evaluating that change on its own. Tracking starts and completions together gave the team a better way to judge whether the full evening schedule was getting more reliable.</p>
 </section>

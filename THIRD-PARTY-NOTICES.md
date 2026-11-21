@@ -337,3 +337,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Additional 21st.dev interaction references
+
+The site adapts the following MIT-licensed patterns for native HTML, CSS, and TypeScript.
+
+- [Table of Contents by Mohammad Shehadeh](https://21st.dev/@mohammadshehadeh/components/toc)
+- [Experience Timeline by shadcnui-blocks](https://21st.dev/@shadcnui-blocks/components/timeline-01)
+- [Zoomable Image by Fuma Nama](https://21st.dev/@fuma-nama/components/zoomable-image)
+- [Animated Beam by dillionverma](https://21st.dev/@dillionverma/components/animated-beam)
+- [Number Ticker by dillionverma](https://21st.dev/@dillionverma/components/number-ticker)
+
+The scroll transition into Selected work is an original implementation inspired by the [Electric Scooter template by 8B](https://github.com/8bsite/electric-scooter-website-template), supplied under the MIT license.

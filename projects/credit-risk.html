@@ -10,6 +10,7 @@ image_alt: "Tableau dashboard for credit risk and customer profitability."
 metrics:
   - value: "30,000"
     label: Anonymized credit card customer records
+    animate: true
   - value: "0.779"
     label: ROC-AUC on a 6,000-record holdout
   - value: "3.15×"
@@ -17,7 +18,7 @@ metrics:
 ---
 <div class="case-grid">
   <section aria-labelledby="problem">
-    <h2 id="problem">The business question</h2>
+    <h2 id="problem" tabindex="-1">The business question</h2>
     <p>A risk team needs to know how many accounts that later defaulted would have surfaced at each level of review capacity. Policy teams face a related question. Tightening a rule changes the number of accounts approved and the risks the portfolio retains. I used the same portfolio to examine both decisions.</p>
   </section>
   <section aria-labelledby="role">
@@ -27,7 +28,7 @@ metrics:
 </div>
 
 {% assign credit = site.data.projects | where: 'slug', page.project | first %}
-<figure class="case-figure">
+<figure id="dashboard" class="case-figure" tabindex="-1">
   <div class="figure-image">
     <a href="{{ credit.image | relative_url }}" data-dashboard-zoom aria-label="Enlarge credit risk dashboard">
       <img src="{{ credit.image | relative_url }}" alt="{{ credit.image_alt | escape }}" width="2402" height="1824" loading="lazy">
@@ -54,7 +55,7 @@ metrics:
   </section>
 </dialog>
 
-<div class="case-grid case-analysis">
+<div class="case-grid case-analysis" id="method" tabindex="-1">
   <section aria-labelledby="evidence">
     <h2 id="evidence">What the holdout showed</h2>
     <p>Histogram gradient boosting led the comparison. Its highest-risk holdout decile defaulted at 69.67%, against 22.12% across the holdout, for 3.15× lift. This showed how a ranked queue could concentrate a limited review effort on accounts with more observed defaults. <a href="https://github.com/aadimandall/credit-risk-customer-profitability-analytics/blob/main/data/processed/model_outputs/_executive_model_summary.md">Holdout evaluation</a>.</p>
@@ -66,6 +67,6 @@ metrics:
 </div>
 
 <section class="case-limitations" aria-labelledby="limits">
-  <h2 id="limits">What a lender would still need to test</h2>
+  <h2 id="limits" tabindex="-1">What a lender would still need to test</h2>
   <p>The full-portfolio view includes training records, and I used the holdout to select the model. A lender would need to validate performance on a later, independent sample, check results across customer groups, and size the cutoff to its review capacity. The financial scenarios use proxies because the data lacks actual pricing, recoveries, and charge-offs.</p>
 </section>

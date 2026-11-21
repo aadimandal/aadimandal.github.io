@@ -3,10 +3,13 @@
   "private": true,
   "scripts": {
     "check:ui": "tsc --noEmit",
-    "build:ui": "npm run check:ui && esbuild _frontend/portfolio-interactions.ts --bundle --minify --format=iife --outfile=assets/js/portfolio-interactions.js"
+    "build:ui": "npm run check:ui && esbuild _frontend/portfolio-interactions.ts _frontend/components/ui/liquid-metal-shader.ts --bundle --minify --format=esm --legal-comments=linked --external:./components/ui/liquid-metal-shader.js --outbase=_frontend --outdir=assets/js"
   },
   "devDependencies": {
     "esbuild": "0.28.2",
     "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "@paper-design/shaders": "0.0.82"
   }
 }

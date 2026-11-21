@@ -10,12 +10,13 @@ metrics:
     label: Customer records scored
   - value: "71,437"
     label: Positive-value paid-offer candidates under base assumptions
+    animate: true
   - value: "$750K"
     label: Proposed test budget cap
 ---
 <div class="case-grid">
   <section aria-labelledby="problem">
-    <h2 id="problem">The business question</h2>
+    <h2 id="problem" tabindex="-1">The business question</h2>
     <p>Churn risk identifies customers who may leave. A paid offer has to clear a second test. The value of keeping the customer, adjusted for the chance the offer works, has to cover its cost. A broad campaign can spend on customers who would have stayed anyway, or pay more for an offer than the relationship is worth.</p>
   </section>
   <section aria-labelledby="role">
@@ -25,12 +26,12 @@ metrics:
 </div>
 
 {% assign retention = site.data.projects | where: 'slug', page.project | first %}
-<figure class="case-figure case-figure--retention">
+<figure id="workflow" class="case-figure case-figure--retention" tabindex="-1" data-workflow-beam>
   {% include workflow.html project=retention %}
   <figcaption>The offer screen combines modeled churn risk, profit-adjusted customer lifetime value, assumed response, and intervention cost. The resulting shortlist feeds the budget simulation and the proposed randomized test.</figcaption>
 </figure>
 
-<div class="case-grid case-analysis">
+<div class="case-grid case-analysis" id="method" tabindex="-1">
   <section aria-labelledby="evidence">
     <h2 id="evidence">What the simulation showed</h2>
     <p>I tested how well the model ranked risk after removing direct cancellation signals, then estimated net save value by subtracting intervention cost from the expected value saved. Under the base assumptions, 7.36% of scored customers cleared the paid-offer screen.</p>
@@ -44,6 +45,6 @@ metrics:
 </div>
 
 <section class="case-limitations" aria-labelledby="limits">
-  <h2 id="limits">What the experiment would establish</h2>
+  <h2 id="limits" tabindex="-1">What the experiment would establish</h2>
   <p>Response, lifetime value, and offer cost are model inputs. The financial figures describe a planning scenario. A randomized holdout would show how many customers stayed because of the offer, giving the team a basis for deciding whether to scale, revise, or stop the program.</p>
 </section>
